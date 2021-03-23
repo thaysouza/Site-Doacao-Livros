@@ -1,0 +1,79 @@
+*, 
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;	
+	box-sizing: border-box;
+
+}
+
+
+.menu{
+    background-color: #7B1FA2;
+    font-family: Mansalva;
+    font-size: 20px;
+    box-shadow: 2px 4px 4px 2px rgba(2, 2, 2, 0.25);
+}
+
+nav ul li .nav-nome{
+    font-weight: bold;
+}
+
+
+nav ul li .nav-entrar {
+	text-align: center;
+	width: 130px;
+	background-color: #EE6666; 
+	border-radius:20px;
+    font-size: 18px;
+    padding: 5px;
+	font-weight: bold;
+}
+
+/**HOME*/
+
+.row-home{
+    background-color: #7B1FA2;
+}
+
+.titulo-home{
+margin-left: 10% ;
+margin-right: 10% ;
+font-size: 60px;
+color: white;
+font-family: Mansalva;
+letter-spacing: 5px;
+
+}
+
+.botao-home{
+    margin-top: 8%;
+	text-align: center;
+	width: 270px;
+    height: 70px;
+	background-color: white; 
+	border-radius:30px;
+    font-size: 30px;
+    padding: 5px;
+	font-weight: bold;
+    box-shadow: 2px 4px 4px 2px rgba(2, 2, 2, 0.25);
+    color: #7B1FA2;
+
+}
+
+
+.sombra{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: #7b1fa293;
+    box-shadow: 2px 4px 4px 2px rgba(2, 2, 2, 0.25);
+}
+
+.sombra-book{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: #ee6666d2;
+    box-shadow: 2px 4px 4px 2px rgba(2, 2, 2, 0.25);
+}
