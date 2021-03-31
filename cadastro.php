@@ -26,11 +26,13 @@
       <img src="img/Como-estudar-em-casa-imagens02-removebg-preview.png" width="300px" alt="">
    
       <div style="height:70vh;" class=" caixa-cadastro d-flex  align-items-center justify-content-center">
-        <form action="#" method="post">
+
+
+        <form action="cadastro_usuario.php" method="post">
           <h3>Cadastre-se</h3>
 
           <div class=" form-group d-flex align-items-center justify-content-center">
-            <input class="form-control" name="email" type="email" placeholder="Informe seu nome">
+            <input class="form-control" name="nome" type="text" placeholder="Informe seu nome">
           </div>
 
           <div class=" form-group d-flex align-items-center justify-content-center">
@@ -42,12 +44,12 @@
           </div>
 
           <div class="form-group d-flex align-items-center justify-content-center">
-            <input class="form-control" name="senha" type="password" placeholder="Confirme sua senha">
+            <input class="form-control" name="conf_senha" type="password" placeholder="Confirme sua senha">
           </div>
           <button type="submit" class="botao-cadastar btn btn-danger">Entrar</button>
-          <button type="submit" class="botao-voltar-home btn"><a style="text-decoration: none; color: white;" href="index.html">Voltar</button></a>
+          <button class="botao-voltar-home btn"><a style="text-decoration: none; color: white;" href="index.php">Voltar</button></a>
           <a style="text-decoration: none;" href="#"><h5 class="fazer-cadastro" >Já possui cadastro? Realize o login.</h5></a>
-          <!--Colocar o modal em php e fazer a chamada dele aqui-->
+          <!--Colocar o modal em um arquivo e fazer a chamada dele aqui-->
         </form>
 
 

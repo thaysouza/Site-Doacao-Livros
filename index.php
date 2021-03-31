@@ -169,8 +169,40 @@
 
 
   <footer>
-    <div class="d-flex  align-items-center justify-content-center" style="height:30vh; background-color: #7B1FA2;;">
-      
+
+   
+    <div class="d-flex justify-content-center align-items-center" style="height: 60vh; background-color: #7B1FA2;">
+       <!---
+      <div class="row ">
+
+        <div class="text-center col" style="width: 20vw;">
+          <a href="#" target="_blank">
+            <img src="img/thay.jpg" class="bd-placeholder-img rounded-circle" width="130" height="130"/>
+          </a>
+          <h4>Enzo damascena</h4>
+          <p><a class="btn btn-secondary mt-2" href="#" role="button">Linkedin &raquo;</a></p>
+        </div>
+
+
+
+        <div class="text-center col" style="width: 20vw;">
+          <a href="#" target="_blank">
+            <img src="img/thay.jpg" class="bd-placeholder-img rounded-circle" width="130" height="130"/>
+          </a>
+          <h4>Jean Kenishi</h4>
+          <p><a class="btn btn-secondary mt-2" href="#" role="button">Linkedin &raquo;</a></p>
+        </div>
+
+        <div class="text-center col" style="width: 20vw;">
+          <a href="#" target="_blank">
+            <img src="img/thay.jpg" class="bd-placeholder-img rounded-circle" width="130" height="130"/>
+          </a>
+          <h4>Tayane Souza</h4>
+          <p><a class="btn btn-secondary mt-2" href="#" role="button">Linkedin &raquo;</a></p>
+        </div>
+      </div>
+
+  -->
     </div>
 
   </footer>
@@ -189,7 +221,7 @@
 
           
           <div style="height:60vh;" class=" caixa-login d-flex  align-items-center justify-content-center">
-            <form action="#" method="post">
+            <form action="login_usuario.php" method="post">
               <h3>Login</h3>
               <div class=" form-group d-flex align-items-center justify-content-center">
                 <input class="form-control" name="email" type="email" placeholder="Digite seu e-mail">
@@ -199,7 +231,7 @@
                 <input class="form-control" name="senha" type="password" placeholder="Digite sua senha">
               </div>
               <button type="submit" class="botao-login btn btn-danger">Entrar</button>
-              <a style="text-decoration: none;" href="#"><h5 class="fazer-cadastro" >Ainda não possui cadastro? Clique aqui.</h5></a>
+              <a style="text-decoration: none;" href="cadastro.php"><h5 class="fazer-cadastro" >Ainda não possui cadastro? Clique aqui.</h5></a>
             </form>
     
     
