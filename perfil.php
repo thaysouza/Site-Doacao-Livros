@@ -7,9 +7,10 @@ if (!isset($_SESSION['nome'])) {
   header('Location: index.php');
   exit;
 } else {
+  $id = $_SESSION['id'];
+  $nome = $_SESSION['nome'];
   $conn = mysqli_connect("localhost", "root", "", "sistemas");
-  $postagens = $conn->query("SELECT * FROM postagens JOIN usuarios WHERE fk_usuario=id ORDER BY id_postagens DESC");
- 
+  $postagens = $conn->query("SELECT * FROM postagens JOIN usuarios WHERE fk_usuario='$id' and nome='$nome'   ORDER BY id_postagens DESC");
 }
 
 
@@ -38,29 +39,30 @@ if (!isset($_SESSION['nome'])) {
 
 
 
-  <div style="height: 55vh;" class="row area-home p-0 m-0 ">
+  <div style="height: 55vh;" class="row area-home p-0 m-0">
     <div class="sombra-home d-flex align-items-center justify-content-start">
-      <div class=" col-4">
+      <div class=" col-4 ">
 
-        <div class="text-center area-info-home ">
-          <h1 class="title-home">Olá, <?php echo $_SESSION['nome'] ?> !</h1>
+        <div class="area-info-home border ">
+          <h5>Nome: <?php echo $_SESSION["nome"] ?></h5>
+          <h5>Email: <?php echo $_SESSION["email"] ?></h5>
+          <h5>Telefone: <?php echo $_SESSION["telefone"] ?></h5>
+          <h5 class="mb-3">Cidade: <?php echo $_SESSION["cidade"] ?></h5>
+      
 
-          <p class="frase-home text-justify">
-            Aqui é sua area pessoal, onde você poderá ver os livros disponíveis e doar.
-          </p>
-
-          <button class="btn btn-danger button-home" data-toggle="modal" data-target="#doacao-livro">Clique aqui pra doar</button>
+          <button class="btn btn-danger mr-3">Editar Perfil</button><button class="btn btn-danger">Excluir Perfil</button>
 
         </div>
 
       </div>
+
     </div>
 
   </div>
 
 
 
-  <h1 class="projetos-nome m-5 text-center" style="color:#757575;">Livros disponíveis</h1>
+  <h1 class="projetos-nome m-5 text-center" style="color:#757575;">Meus Livros publicados</h1>
 
   <div class="container">
 
@@ -90,14 +92,17 @@ if (!isset($_SESSION['nome'])) {
                   <ul class="list-group list-group-flush">
                   
                     <li class="list-group-item">Cidade: <?php echo $postagem["cidade"] ?> </li>
-                    <li class="list-group-item"><a href="https://web.whatsapp.com/send?phone=55<?php echo  $postagem["telefone"] ?>" target="_blank" class="btn btn-danger">entre em contato</a></li>
+                    <li class="list-group-item"><a class="btn btn-danger text-white">editar</a> <a  class="btn btn-danger text-white">excluir</a></li>
                   </ul>
                 </div>
               </div>
 
 
+            
+
 
           <?php }
+        
           } ?>
 
 
@@ -114,7 +119,14 @@ if (!isset($_SESSION['nome'])) {
   </div>
 
 
-<? include("publicar_livro.php"); ?>
+
+
+
+
+
+
+<?  include("publicar_livro.php"); ?>
+
 
 
 

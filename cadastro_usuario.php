@@ -9,9 +9,19 @@ $senha = $_POST['senha'];
 $conf_senha = $_POST['conf_senha'];
 
 if(strlen($nome) > 3 && strlen($email) > 3 && strlen($senha) > 3 && $senha == $conf_senha) {
-  
-  $senha_cripto = md5($senha);
 
+  $con = mysqli_connect("localhost", "root", "", "sistemas");
+  $sql = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '{$email}'");
+  if(mysqli_num_rows($sql)>0) {
+    echo "<script>
+          alert('Já existe um usuario cadastrado com esse email!')
+          window.location.href = 'cadastro.html'
+        </script>
+        ";
+
+  }else{
+
+  $senha_cripto = md5($senha);
   $conn = mysqli_connect("localhost", "root", "", "sistemas");
   $sql = "INSERT INTO usuarios (nome, email,telefone, cidade, senha) values ('$nome', '$email', '$telefone','$cidade','$senha_cripto')";
   $conn->query($sql);
@@ -21,6 +31,7 @@ if(strlen($nome) > 3 && strlen($email) > 3 && strlen($senha) > 3 && $senha == $c
           window.location.href = 'index.html'
         </script>
         ";
+  }
 }
 else if ($senha != $conf_senha) {
   echo "<script>

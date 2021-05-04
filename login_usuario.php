@@ -16,6 +16,8 @@ if (strlen($email) > 3 && strlen($senha) > 3) {
 
   $_SESSION['nome'] = $usuarios["nome"];
   $_SESSION['email'] = $usuarios["email"];
+  $_SESSION['telefone'] = $usuarios["telefone"];
+  $_SESSION['cidade'] = $usuarios["cidade"];
   $_SESSION['id'] = $usuarios["id"];
 
   header('Location: home.php');
