@@ -1,0 +1,228 @@
+<nav class="navbar navbar-expand-lg menu">
+	<div class="container">
+		<div class="navbar-nav">
+			<a class="menuItem" href="/timeline">
+				Home
+			</a>
+
+			<a class="menuItem" href="/sair">
+				Sair
+			</a>
+
+
+			<img src="/img/twitter_logo.png" class="menuIco" />
+		</div>
+	</div>
+</nav>
+
+<div class="container mt-5">
+	<div class="row pt-2">
+
+		<div class="col-md-3">
+
+			<div class="perfil">
+				<div class="perfilTopo">
+
+				</div>
+
+				<div class="perfilPainel">
+
+					<div class="row mt-2 mb-2">
+
+						<?php
+						foreach ($this->view->info_usuario  as $info_user => $infoUser) {
+
+						?>
+
+							<div class="col mb-2">
+								<span class="perfilPainelNome"><?= $infoUser['nome'] ?></span>
+							</div>
+
+							<div class="col mb-2">
+								<span class="perfilPainelNome"><?= $infoUser['email'] ?></span>
+							</div>
+
+							<div class="col mb-2">
+								<span class="perfilPainelNome"><?= $infoUser['telefone'] ?></span>
+							</div>
+
+							<div class="col mb-2">
+								<span class="perfilPainelNome"><?= $infoUser['cidade'] ?></span>
+							</div>
+
+
+						<?php } ?>
+					</div>
+
+					<div class="row mb-2">
+
+						<div class="col">
+							<span class="perfilPainelItem">Total de Livros Doados</span><br />
+							<span class="perfilPainelItemValor"><?=$this->view->total_livros['total_livros']?></span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguindo</span><br />
+							<span class="perfilPainelItemValor">0</span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguidores</span><br />
+							<span class="perfilPainelItemValor">0</span>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+			<div class="row mb-2">
+				<div class="col tweetBox">
+
+
+
+
+
+
+					<form action="/postagens" method="post">
+						<h3 class="title-publi-book">Publicar Livro</h3>
+						<div class=" form-group d-flex align-items-center justify-content-center">
+							<input class="form-control" name="imagem" type="text" placeholder="Informe a Url da imagem">
+						</div>
+
+						<div class="form-group d-flex align-items-center justify-content-center">
+							<input class="form-control" name="nome_livro" type="text" placeholder="Informe o nome do livro">
+						</div>
+
+						<div class="form-group d-flex align-items-center justify-content-center">
+
+							<select name="categoria" size="5">
+								<option value="categoria" disabled selected>Selecione a Categoria</option>
+								<option value="Autoajuda">Autoajuda</option>
+								<option value="Aventura">Aventura</option>
+								<option value="Biográfia">Biográfia</option>
+								<option value="Comédia">Comédia</option>
+								<option value="Didático">Didático</option>
+								<option value="Drama">Drama</option>
+								<option value="Fantasia">Fantasia</option>
+								<option value="Ficção científica">Ficção científica</option>
+								<option value="História em Quadrinhos">História em Quadrinhos</option>
+								<option value="Infantil">Infantil</option>
+								<option value="Infanto Juvenil">Infanto Juvenil</option>
+								<option value="Poesia">Poesia</option>
+								<option value="Romance">Romance</option>
+								<option value="Terror">Terror</option>
+								<option value="Outro">Outro</option>
+							</select>
+
+						</div>
+
+
+						<button type="submit" class="btn btn-primary">Publicar</button>
+					</form>
+
+
+					<!--
+					<form>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						
+						<div class="col mt-2 d-flex justify-content-end">
+							<button type="submit" class="btn btn-primary">Tweet</button>
+						</div>
+
+					</form>  -->
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+
+
+
+			<?php
+			foreach ($this->view->postagem as $id_postagem => $postagens) {
+
+			?>
+
+
+
+
+				<div class="col-3 mb-5 d-flex align-items-center justify-content-center">
+
+					<div class=" card d-flex align-items-center justify-content-center" style="width: 15rem; height:auto;">
+						<img style=" height:35vh; width:200px;" class="card-img-top pt-3" src="<?= $postagens['imagem'] ?>" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title"><?= $postagens['nome_livro'] ?> </h5>
+						</div>
+						<ul class="list-group list-group-flush">
+
+							<li class="list-group-item">Cidade: <?= $postagens['cidade'] ?></li>
+							<li class="list-group-item">Cidade: <?= $postagens['data'] ?></li>
+							<li class="list-group-item"><a href="https://web.whatsapp.com/send?phone=55<?= $postagens['telefone'] ?>" target="_blank" class="btn btn-danger">entre em contato</a></li>
+							<a class="btn btn-danger" onclick="confirmar()">Remover</a>
+
+							<script>
+								function confirmar() {
+									let confirmacao = confirm("Você deseja realmente excluir essa publicação?");
+
+									if (confirmacao == true) {
+										location.href = "/excluir_postagens?excluir_postagens=remover&id_postagem=" + <?= $postagens['id'] ?>;
+
+									}
+
+								}
+							</script>
+
+						</ul>
+					</div>
+				</div>
+
+
+
+			<?php
+			} ?>
+
+
+
+
+
+			<!--
+
+			<div class="row tweet">
+				<div class="col">
+					<p><strong>Nome do Usuário</strong> <span class="text text-muted">- data tweet</span></p>
+					<p>Conteúdo do tweet</p>
+
+					<br />
+					<form>
+						<div class="col d-flex justify-content-end">
+							<button type="submit" class="btn btn-danger"><small>Remover</small></button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			
+-->
+
+		</div>
+
+
+		<div class="col-md-3">
+			<div class="quemSeguir">
+				<span class="quemSeguirTitulo">Quem seguir</span><br />
+				<hr />
+				<a href="/buscarLivros" class="quemSeguirTxt">Buscar Livros</a>
+			</div>
+		</div>
+
+	</div>
+</div>
