@@ -117,17 +117,6 @@ class Postagens extends Model {
  
 
 
-
-        //total de livros doados
-        public function mostrarTotalLivros(){
-            $query = "select count(*) as total_livros from postagens where id_usuario = :id_usuario";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(':id_usuario', $this->__get('id_usuario')); ///associando ao id usuario da sessão 
-            $stmt->execute();
-    
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
-        }
-
     
  
  

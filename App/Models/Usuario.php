@@ -23,43 +23,40 @@ class Usuario extends Model {
    }
 
    //salvar  no banco de dados 
-   public function registrar(){
+   public function salvar() {
 
-    $query = "insert into usuarios(nome, email, telefone, cidade, senha, tipo)values(:nome, :email, :telefone,:cidade, :senha, 1)";
+    $query = "insert into usuarios(nome, email, telefone, cidade, senha)values(:nome, :email, :telefone, :cidade, :senha)";
     $stmt = $this->db->prepare($query);
     $stmt->bindValue(':nome', $this->__get('nome'));
     $stmt->bindValue(':email', $this->__get('email'));
     $stmt->bindValue(':telefone', $this->__get('telefone'));
     $stmt->bindValue(':cidade', $this->__get('cidade'));
-    $stmt->bindValue(':senha', $this->__get('senha'));
+    $stmt->bindValue(':senha', $this->__get('senha')); //md5() -> hash 32 caracteres
     $stmt->execute();
 
-
     return $this;
-   }
+}
 
-       ///validar se o cadastro pode ser feito 
-       public function validarCadastro(){
-           $valido = true; 
+//validar se um cadastro pode ser feito
+public function validarCadastro() {
+    $valido = true;
 
-           if(strlen($this->__get('nome')) <3){
-               $valido = false;
-           }
-           if(strlen($this->__get('email')) <3){
-            $valido = false;
-        }
-
-
-        if(strlen($this->__get('telefone')) <3){
-            $valido = false;
-        }
-
-        if(strlen($this->__get('senha')) <3){
-            $valido = false;
-        }
-
-        return $valido; 
+    if(strlen($this->__get('nome')) < 3) {
+        $valido = false;
     }
+
+    if(strlen($this->__get('email')) < 3) {
+        $valido = false;
+    }
+
+    if(strlen($this->__get('senha')) < 3) {
+        $valido = false;
+    }
+
+
+    return $valido;
+}
+
 
 
     //recuperar um usuario por e-mail /// verificar se o email ja foi cadastrado
@@ -76,24 +73,23 @@ class Usuario extends Model {
 
 
 
-    public function autenticar(){
+	public function autenticar() {
 
-        $query = "select id, nome, email, tipo from usuarios where email = :email and senha = :senha";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':email', $this->__get('email'));
-        $stmt->bindValue(':senha', $this->__get('senha'));
-        $stmt->execute();
+		$query = "select id, nome, email from usuarios where email = :email and senha = :senha";
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':email', $this->__get('email'));
+		$stmt->bindValue(':senha', $this->__get('senha'));
+		$stmt->execute();
 
-        $usuario = $stmt->fetch(\PDO::FETCH_ASSOC);
+		$usuario = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        if($usuario['id'] != '' && $usuario['nome'] != ''){
-            $this->__set('id',$usuario['id']);
-            $this->__set('nome',$usuario['nome']);
-        }
+		if($usuario['id'] != '' && $usuario['nome'] != '') {
+			$this->__set('id', $usuario['id']);
+			$this->__set('nome', $usuario['nome']);
+		}
 
-        return $this; 
-
-    }
+		return $this;
+	}
 
 
     ///////FAZENDO CONSULTA NO MEU BANCO DE DADOS
@@ -120,7 +116,15 @@ class Usuario extends Model {
 
 
 
+    //total de livros doados
+    public function mostrarTotalLivros(){
+        $query = "select count(*) as total_livros from postagens where id_usuario = :id_usuario";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id')); ///associando ao id usuario da sessão 
+        $stmt->execute();
 
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 
 
 

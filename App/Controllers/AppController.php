@@ -22,16 +22,16 @@ class AppController extends Action {
 
              
             //para setar os valores retornados do bd na pagina
-            $this->view->postagem = $postagens->mostrarLivros();
+            $this->view->postagem = $postagens->infoUsuarioPostagem();
 
 
             /////////////////////
            $usuario = Container::getModel('Usuario');
-           $postagem = Container::getModel('postagens');
+           
            $usuario->__set('id', $_SESSION['id']);
 
            $this->view->info_usuario = $usuario->mostrarInfoUsuario();
-           $this->view->total_livros =  $postagem->mostrarTotalLivros();
+           $this->view->total_livros =  $usuario->mostrarTotalLivros();
 
 
 

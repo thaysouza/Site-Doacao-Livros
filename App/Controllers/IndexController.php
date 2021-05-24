@@ -48,33 +48,29 @@ class IndexController extends Action {
 		 $usuario->__set('telefone', $_POST['telefone']);
 		 $usuario->__set('cidade', $_POST['cidade']);
 		 $usuario->__set('senha', md5($_POST['senha']));
-		 
-         
 
-		 if($usuario->validarCadastro() && count($usuario->getUsuarioPorEmail()) == 0){
-           //count retorna a  quantidade de registros encontrados na busca 
 
-				$usuario->registrar();
 
-                //para retornar uma mensagem de sucesso
-				$this->render('cadastro');
+		 if($usuario->validarCadastro() && count($usuario->getUsuarioPorEmail()) == 0) {
+		
+			$usuario->salvar();
 
-        
-		 }else{
-            //pra setar os nomes com o value
-			$this->view->usuario = array(
-               'nome' => $_POST['nome'],
-			   'email' => $_POST['email'],
-			   'telefone' => $_POST['telefone'],
-			   'cidade' => $_POST['cidade'],
-			   'senha' => $_POST['senha'],
+			$this->render('cadastro');
 
-			);
+	} else {
 
-			$this->view->erroCadastro = true;
+		$this->view->usuario = array(
+			'nome' => $_POST['nome'],
+			'email' => $_POST['email'],
+			'telefone' => $_POST['telefone'],
+			'cidade' => $_POST['cidade'],
+			'senha' => $_POST['senha'],
+		);
 
-			$this->render('inscreverse');
-		 }
+		$this->view->erroCadastro = true;
+
+		$this->render('inscreverse');
+	}
 	   
 	}
 
