@@ -70,10 +70,10 @@ class Route extends Bootstrap {
 		);
 
 
-		$routes['excluir_postagens'] = array(
-			'route' => '/excluir_postagens',
+		$routes['remover_postagens'] = array(
+			'route' => '/remover_postagens',
 			'controller' => 'AppController',
-			'action' => 'excluir_postagens'
+			'action' => 'remover_postagens'
 		);
 
 

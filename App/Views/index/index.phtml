@@ -1,109 +1,114 @@
 <header>
-    <nav style="height: 10vh;" class="menu navbar navbar-expand-md navbar-light fixed-top">
-      <div class="col-2 d-flex align-items-center ">
-        <a href="#home" style="text-decoration: none;">
-         <img class="ml-5" src="img/livro-menu-removebg-preview.png" width="80px" alt="">
-         <!--<span style="font-size: 25px; text-decoration: none; color: #ee6666d2; font-weight: bold;" class="mx-4 mt-2 ">NOME SITE</span>-->
-        </a>
-        </div>
-
-    
-
-        <button class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nav-principal">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="nav-principal">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="livros.php" class="botao-books nav-nome nav-link  mx-4 text-white ">Livros Disponiveis</a>
-            </li>
-
-            <li class="nav-item">
-			<form method="post" action="/autenticarAdm">
-			<div class="row">
-				<div class="col">
-					<input type="text" name="email" class="form-control" placeholder="E-mail">
-				</div>
-				<div class="col">
-					<input type="password" name="senha" class="form-control" placeholder="Senha">
-				</div>
-				<div class="col-auto">
-					<button type="submit" class="btn btn-primary">Area Adm</button>
-				</div>
-			</div>
-            
-			<? if($this->view->login == 'erro2') { ?>
-			<div class="row">
-			  <div class="col">
-			  <span class="text text-danger">Acesso negado</span>
-			  </div>
-			</div>
-           <?  } ?>
-
-		</form>
-            </li>
+	<nav style="height: 10vh;" class="menu navbar navbar-expand-md navbar-light fixed-top">
+		<div class="col-2 d-flex align-items-center ">
+			<a href="#home" style="text-decoration: none;">
+				<img class="ml-5" src="img/livro-menu-removebg-preview.png" width="80px" alt="">
+				<!--<span style="font-size: 25px; text-decoration: none; color: #ee6666d2; font-weight: bold;" class="mx-4 mt-2 ">NOME SITE</span>-->
+			</a>
+		</div>
 
 
-          </ul>
 
-        </div>
+		<button class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nav-principal">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
- 
+		<div class="collapse navbar-collapse" id="nav-principal">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a href="/buscarLivros" class="botao-books nav-nome nav-link  mx-4 text-white ">Livros Disponiveis</a>
+				</li>
 
-    </nav>
+				<li class="nav-item input-login-adm ">
+					<form method="post" action="/autenticarAdm">
+						<div class="row">
+							<div class="col">
+								<input type="text" name="email" class="form-control" placeholder="E-mail">
+							</div>
+							<div class="col">
+								<input type="password" name="senha" class="form-control" placeholder="Senha">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-dark mt-2" onclick="resposta()">Area Adm</button>
+							</div>
+						</div>
 
-  </header>
+						<? if ($this->view->login == 'erro2') { ?>
+
+							<script>
+								function resposta() {
+
+									alert("E-mail e ou senha inválido(s)");
+
+								}
+							</script>
+
+
+						<?  } ?>
+
+					</form>
+				</li>
+
+
+			</ul>
+
+		</div>
+
+
+
+	</nav>
+
+</header>
 
 
 
 <div id="home" class=" row row-home m-0 p-0 ">
 
-<div  style="height: 100vh;" class="col col-md-6 d-flex  align-items-center justify-content-center">
+	<div style="height: 100vh;" class="col col-md-6 d-flex  align-items-center justify-content-center">
 
-  <div class=" text-center">
-   
-         
-  <form class="caixa-login" method="post" action="/autenticar">
-  <h3>Faça seu Login</h3>
-			
-			<input type="text" name="email" class="form-control" placeholder="E-mail">
-		
-			<input type="password" name="senha" class="form-control" placeholder="Senha">
-		
-			<button type="submit" class="botao-login mb-2">Entrar</button><br>
-		
+		<div class=" text-center">
 
-	<?php if($this->view->login == 'erro') { ?>
-		<div class="alert alert-danger mt-2" role="alert">
-		*E-mail e ou senha inválido(s)
+
+			<form class="caixa-login" method="post" action="/autenticar">
+				<h3>Faça seu Login</h3>
+
+				<input type="text" name="email" class="form-control" placeholder="E-mail">
+
+				<input type="password" name="senha" class="form-control" placeholder="Senha">
+
+				<button type="submit" class="botao-login mb-2">Entrar</button><br>
+
+
+				<?php if ($this->view->login == 'erro') { ?>
+					<div class="alert alert-danger mt-2" role="alert">
+						*E-mail e ou senha inválido(s)
+					</div>
+
+
+				<?php } ?>
+			</form>
+
+			<a href="/inscreverse" class="text-white">Ainda não possui uma conta? Clique aqui!</a>
+
+		</div>
+
+
+	</div>
+
+
+
+	<div style="height: 100vh;" class="col col-md-6 d-flex m-0 p-0 align-items-end justify-content-center">
+		<div class=" text-center sombra-img">
+
+			<img src="img/img-home.png" width="580px" alt="">
+
+
+		</div>
+
+	</div>
+
+
 </div>
-				
-		
-	<?php } ?>
-</form>
-
-<a href="/inscreverse" class="text-white">Ainda não possui uma conta? Clique aqui!</a>
-
-  </div>
-
-
-</div>
-
-
-
-<div style="height: 100vh;" class="col col-md-6 d-flex m-0 p-0 align-items-end justify-content-center">
-  <div class=" text-center sombra-img">
-
-	<img src="img/img-home.png" width="580px" alt="">
-
-
-  </div>
-
-</div>
-
-
-</div>
 
 
 
@@ -111,7 +116,7 @@
 
 
 
-  
+
 
 
 
@@ -185,13 +190,15 @@
 				</div>
 			</div>
 
-			<?php //if($this->view->login == 'erro') { ?>
+			<?php //if($this->view->login == 'erro') { 
+			?>
 				<div class="row">
 					<div class="col">
 						<span class="text text-danger">*E-mail e ou senha inválido(s)</span>
 					</div>
 				</div>
-			<?php // } ?>
+			<?php // } 
+			?>
 		</form>
 
 		<div class="row pt-5 pl-5 pr-5">
@@ -226,13 +233,15 @@
 				</div>
 			</div>
             
-			<? //if($this->view->login == 'erro2') { ?>
+			<? //if($this->view->login == 'erro2') { 
+			?>
 			<div class="row">
 			  <div class="col">
 			  <span class="text text-danger">Acesso negado</span>
 			  </div>
 			</div>
-           <? // } ?>
+           <? // } 
+			?>
 
 		</form>
 

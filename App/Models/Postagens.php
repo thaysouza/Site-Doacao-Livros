@@ -1,30 +1,34 @@
-<?php 
+<?php
 
 
 namespace App\Models;
 
 use MF\Model\Model;
 
-class Postagens extends Model {
+class Postagens extends Model
+{
 
-    private $id; 
+    private $id;
     private $id_usuario;
     private $nome_livro;
     private $imagem;
     private $categoria;
     private $data;
- 
-    public function __get($atributo){
+
+    public function __get($atributo)
+    {
         return $this->$atributo;
     }
- 
-    public function __set($atributo, $valor) {
-    $this->$atributo = $valor;
+
+    public function __set($atributo, $valor)
+    {
+        $this->$atributo = $valor;
     }
 
 
-    ///salvar
-    public function cadastrarPostagens(){
+
+    public function cadastrarPostagens()
+    {
 
         $query = "insert into postagens(id_usuario, nome_livro, imagem, categoria)
         values(:id_usuario, :nome_livro, :imagem,:categoria)";
@@ -34,15 +38,14 @@ class Postagens extends Model {
         $stmt->bindValue(':imagem', $this->__get('imagem'));
         $stmt->bindValue(':categoria', $this->__get('categoria'));
         $stmt->execute();
-    
+
         return $this;
     }
 
 
 
-    ///recuperar
-
-    public function infoUsuarioPostagem() {
+    public function infoUsuarioPostagem()
+    {
 
         $query = "
         
@@ -63,15 +66,21 @@ class Postagens extends Model {
 
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
     }
 
 
-    public function mostrarLivros() {
+    public function mostrarLivros()
+    {
 
         $query = "
         
-           select id, id_usuario, nome_livro, imagem, categoria, data from postagens 
+        select 
+        p.id, p.id_usuario, u.nome, u.telefone, u.cidade, p.nome_livro, p.imagem, p.categoria, DATE_FORMAT(p.data, '%d/%m/%Y ') as data
+     from 
+         postagens as p 
+         left join usuarios as u on (p.id_usuario = u.id)
+     order by 
+        data desc 
         ";
 
         $stmt = $this->db->prepare($query);
@@ -79,11 +88,11 @@ class Postagens extends Model {
 
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
     }
 
 
-    public function buscarLivros(){
+    public function buscarLivros()
+    {
         $query = "select 
         p.id, p.id_usuario, u.nome, u.telefone, u.cidade, p.nome_livro, p.imagem, p.categoria, DATE_FORMAT(p.data, '%d/%m/%Y %H:%i') as data
      from 
@@ -93,19 +102,19 @@ class Postagens extends Model {
      p.categoria like :categoria
      ";
 
-     $stmt = $this->db->prepare($query);
-     $stmt->bindValue(':categoria', $this->__get('categoria'));
-     $stmt->execute();
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':categoria', $this->__get('categoria'));
+        $stmt->execute();
 
 
-     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
 
-    public function removerPostagem($id_postagem){
-      
+
+    public function removerPostagem($id_postagem)
+    {
+
         $query = "delete from postagens where id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id', $id_postagem);
@@ -113,13 +122,4 @@ class Postagens extends Model {
 
         return true;
     }
-
- 
-
-
-    
- 
- 
-
-
 }

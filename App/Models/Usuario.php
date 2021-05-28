@@ -92,10 +92,6 @@ public function validarCadastro() {
 	}
 
 
-    ///////FAZENDO CONSULTA NO MEU BANCO DE DADOS
-
-
-    //retornar as informações do usuario 
     public function mostrarInfoUsuario(){
         $query = "select nome, email,telefone,cidade from usuarios where id = :id_usuario";
         $stmt = $this->db->prepare($query);
@@ -115,12 +111,10 @@ public function validarCadastro() {
     }
 
 
-
-    //total de livros doados
     public function mostrarTotalLivros(){
         $query = "select count(*) as total_livros from postagens where id_usuario = :id_usuario";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':id_usuario', $this->__get('id')); ///associando ao id usuario da sessão 
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
         $stmt->execute();
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);

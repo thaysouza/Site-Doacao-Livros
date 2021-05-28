@@ -1,27 +1,31 @@
-<?php 
+<?php
 
 
 namespace App\Models;
 
 use MF\Model\Model;
 
-class Administrador extends Model {
+class Administrador extends Model
+{
 
-   private $id_adm; 
-   private $email;
-   private $senha;
+    private $id_adm;
+    private $email;
+    private $senha;
 
-   public function __get($atributo){
-       return $this->$atributo;
-   }
+    public function __get($atributo)
+    {
+        return $this->$atributo;
+    }
 
-   public function __set($atributo, $valor) {
-   $this->$atributo = $valor; 
-   }
+    public function __set($atributo, $valor)
+    {
+        $this->$atributo = $valor;
+    }
 
 
 
-    public function autenticarAdm(){
+    public function autenticarAdm()
+    {
 
         $query = "select id_adm, email, senha from administrador where email = :email and senha = :senha";
         $stmt = $this->db->prepare($query);
@@ -31,18 +35,11 @@ class Administrador extends Model {
 
         $adm = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        if($adm ['id_adm'] != ''){
-            $this->__set('id_adm',$adm['id_adm']);
-            $this->__set('email',$adm['email']);
+        if ($adm['id_adm'] != '') {
+            $this->__set('id_adm', $adm['id_adm']);
+            $this->__set('email', $adm['email']);
         }
 
-        return $this; 
-
+        return $this;
     }
-
-
-    
-
-
- 
 }

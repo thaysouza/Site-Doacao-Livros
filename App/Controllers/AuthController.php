@@ -6,98 +6,68 @@ namespace App\Controllers;
 use MF\Controller\Action;
 use MF\Model\Container;
 
-class AuthController extends Action {
+class AuthController extends Action
+{
 
-	public function autenticar() {
-		
-		$usuario = Container::getModel('Usuario');
+    public function autenticar()
+    {
 
-		$usuario->__set('email', $_POST['email']);
-		$usuario->__set('senha', md5($_POST['senha']));
+        $usuario = Container::getModel('Usuario');
 
-		$usuario->autenticar();
+        $usuario->__set('email', $_POST['email']);
+        $usuario->__set('senha', md5($_POST['senha']));
 
-		if($usuario->__get('id') != '' && $usuario->__get('nome')) {
-			
-			session_start();
+        $usuario->autenticar();
 
-			$_SESSION['id'] = $usuario->__get('id');
-			$_SESSION['nome'] = $usuario->__get('nome');
+        if ($usuario->__get('id') != '' && $usuario->__get('nome')) {
 
-			header('Location: /perfil');
+            session_start();
 
-		} else {
-			header('Location: /?login=erro');
-		}
+            $_SESSION['id'] = $usuario->__get('id');
+            $_SESSION['nome'] = $usuario->__get('nome');
 
-	
-    /*
-    
-
-    
-
-    //fazendo um select em modal>usuario
-    $usuario->autenticar();
-
-   //So é retornado algo quando se tem os dados registrado no bd, com isso será feito uma veriifcação para autenticacao ///modal>usuario
-   //quando email e senha é autenticado, é recuperado o id e senha, mostra que o user existe
-   
-    if($usuario->__get('id') != '' && $usuario->__get('nome') != ''){
-        //echo 'Autenticado';
-        session_start();
-
-        $_SESSION['id'] = $usuario->__get('id');
-        $_SESSION['nome'] = $usuario->__get('nome');
-
-         header('Location: /perfil');
-
-
-    }else{
-        header('Location: /?login=erro');
-    }*/
-
-   }
-
-
-
-
-   public function autenticarAdm(){
-
-    
-    $adm = Container::getModel('Administrador');
-
-    $adm ->__set('email', $_POST['email']);
-    $adm ->__set('senha',md5($_POST['senha']));
-
-    $adm->autenticarAdm();
- 
-   
-    if($adm->__get('id_adm') != '' && $adm->__get('email') != ''){
-        //echo 'Autenticado';
-        session_start();
-
-        $_SESSION['id_adm'] = $adm->__get('id_adm');
-        $_SESSION['email'] = $adm->__get('email');
-
-         header('Location: /areaAdm');
-
-
-    }else{
-        header('Location: /?login=erro2');
+            header('Location: /perfil');
+        } else {
+            header('Location: /?login=erro');
+        }
     }
 
-   }
+
+
+
+    public function autenticarAdm()
+    {
+
+
+        $adm = Container::getModel('Administrador');
+
+        $adm->__set('email', $_POST['email']);
+        $adm->__set('senha', md5($_POST['senha']));
+
+        $adm->autenticarAdm();
+
+
+        if ($adm->__get('id_adm') != '' && $adm->__get('email') != '') {
+
+            session_start();
+
+            $_SESSION['id_adm'] = $adm->__get('id_adm');
+            $_SESSION['email'] = $adm->__get('email');
+
+            header('Location: /areaAdm');
+        } else {
+            header('Location: /?login=erro2');
+        }
+    }
 
 
 
 
 
-   public function sair(){
-       session_start();
-       session_destroy();
-       header('Location: /');
-   }
-
-
-
+    public function sair()
+    {
+        session_start();
+        session_destroy();
+        header('Location: /');
+    }
 }

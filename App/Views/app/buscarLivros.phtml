@@ -1,104 +1,64 @@
+<header>
+  <nav style="height: 10vh;" class="menu navbar navbar-expand-md navbar-light fixed-top">
+    <div class="col-2 d-flex align-items-center ">
+      <a href="#home" style="text-decoration: none;">
+        <img class="ml-5" src="img/livro-menu-removebg-preview.png" width="80px" alt="">
+        <!--<span style="font-size: 25px; text-decoration: none; color: #ee6666d2; font-weight: bold;" class="mx-4 mt-2 ">NOME SITE</span>-->
+      </a>
+    </div>
 
 
-<nav class="navbar navbar-expand-lg menu">
-	<div class="container">
-	  <div class="navbar-nav">
-	  	<a class="menuItem" href="/perfil">
-	  		Home
-	  	</a>
 
-	  	<a class="menuItem" href="/sair">
-	  		Sair
-	  	</a>
-			<img src="/img/twitter_logo.png" class="menuIco" />
-	  </div>
-	</div>
-</nav>
+    <button class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nav-principal">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="container mt-5">
-	<div class="row pt-2">
-		
-		<div class="col-md-3">
+    <div class="collapse navbar-collapse" id="nav-principal">
 
-			<div class="perfil">
-				<div class="perfilTopo">
+    </div>
 
-				</div>
 
-				<div class="perfilPainel">
-					
-					<div class="row mt-2 mb-2">
-						<div class="col mb-2">
-							<span class="perfilPainelNome">Nome do Usuário</span>
-						</div>
-					</div>
 
-					<div class="row mb-2">
+  </nav>
 
-						<div class="col">
-							<span class="perfilPainelItem">Tweets</span><br />
-							<span class="perfilPainelItemValor">0</span>
-						</div>
+</header>
 
-						<div class="col">
-							<span class="perfilPainelItem">Seguindo</span><br />
-							<span class="perfilPainelItemValor">0</span>
-						</div>
 
-						<div class="col">
-							<span class="perfilPainelItem">Seguidores</span><br />
-							<span class="perfilPainelItemValor">0</span>
-						</div>
 
-					</div>
+<div class="container text-center">
+  <h1 style="margin-top: 15vh; color:#ee6666; font-size: 50px;">Buscar Livros</h1>
+  <p>Escolha a categoria do livro</p>
 
-				</div>
-			</div>
+  <div style="height:30vh;" class="col d-flex align-items-center justify-content-center">
 
-		</div>
 
-		<div class="col-md-6">
-			
-			<div class="row mb-2">
-				<div class="col">
-					<div class="card">
-						<div class="card-body">
-						<form method="get" action="/buscarLivros">
-								<div class="input-group mb-3">
-								<select name="livros" size="5">
-                  <option value="categoria" disabled selected>Selecione a Categoria</option>
-                  <option value="Autoajuda">Autoajuda</option>
-                  <option value="Aventura">Aventura</option>
-                  <option value="Biográfia">Biográfia</option>
-                  <option value="Comédia">Comédia</option>
-                  <option value="Didático">Didático</option>
-                  <option value="Drama">Drama</option>
-                  <option value="Fantasia">Fantasia</option>
-                  <option value="Ficção científica">Ficção científica</option>
-                  <option value="História em Quadrinhos">História em Quadrinhos</option>
-                  <option value="Infantil">Infantil</option>
-                  <option value="Infanto Juvenil">Infanto Juvenil</option>
-                  <option value="Poesia">Poesia</option>
-                  <option value="Romance">Romance</option>
-                  <option value="Terror">Terror</option>
-                  <option value="Outro">Outro</option>
-                </select>
+    <form method="get" action="/buscarLivros">
+      <div class="input-group mb-3">
+        <select name="livros" size="5">
+          <option value="categoria" disabled selected>Selecione a Categoria</option>
+          <option value="Autoajuda">Autoajuda</option>
+          <option value="Aventura">Aventura</option>
+          <option value="Biográfia">Biográfia</option>
+          <option value="Comédia">Comédia</option>
+          <option value="Didático">Didático</option>
+          <option value="Drama">Drama</option>
+          <option value="Fantasia">Fantasia</option>
+          <option value="Ficção científica">Ficção científica</option>
+          <option value="História em Quadrinhos">História em Quadrinhos</option>
+          <option value="Infantil">Infantil</option>
+          <option value="Infanto Juvenil">Infanto Juvenil</option>
+          <option value="Poesia">Poesia</option>
+          <option value="Romance">Romance</option>
+          <option value="Terror">Terror</option>
+          <option value="Outro">Outro</option>
+        </select>
 
-									<div class="input-group-append">
-										<button class="btn btn-primary" type="submit">Procurar</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			
-
-		</div>
-	</div>
-</div>
+        <div class="input-group-append">
+          <button style="background: #ee6666; font-size: 20px; width: 150px" class="btn text-white" type="submit">Procurar</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
 
 
@@ -106,29 +66,51 @@
 
 
 
+  <div id="projetos" class=" row  bg-white m-0 p-0">
 
-<?php
-         foreach($this->view->postagemLivros as $indice_postagem => $postagens) {
 
-          ?>
+    <div class="col text-center">
 
-              <div class="col-3 mb-5 d-flex align-items-center justify-content-center">
 
-                <div class=" card d-flex align-items-center justify-content-center" style="width: 15rem; height:auto;">
-                  <img style=" height:35vh; width:200px;" class="card-img-top pt-3" src="<?=$postagens['imagem'] ?>" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title"><?=$postagens['nome_livro'] ?></h5>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                  
-                    <li class="list-group-item">Cidade: <?=$postagens['cidade'] ?></li>
-					<li class="list-group-item">Cidade: <?=$postagens['data'] ?></li>
-                    <li class="list-group-item"><a href="https://web.whatsapp.com/send?phone=55<?=$postagens['telefone'] ?>" target="_blank" class="btn btn-danger">entre em contato</a></li>
-                  </ul>
-                </div>
+      <div class="row">
+
+
+
+        <?php
+        foreach ($this->view->postagemLivros as $id_postagem => $postagens) {
+
+        ?>
+
+
+          <div class="col-3 mb-5 d-flex align-items-center justify-content-center text-center">
+
+            <div class=" card d-flex align-items-center justify-content-center" style="width: 15rem; height:auto;">
+              <img style=" height:35vh; width:200px;" class="card-img-top pt-3" src="<?= $postagens['imagem'] ?>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><?= $postagens['nome_livro'] ?></h5>
               </div>
+              <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">Cidade: <?= $postagens['cidade'] ?> </li>
+                <li class="list-group-item"> Data da publicação: <?= $postagens['data'] ?> </li>
+
+              </ul>
+
+            </div>
+          </div>
 
 
 
-          <?php 
-          } ?>
+
+        <?php
+        } ?>
+
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>

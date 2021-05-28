@@ -1,228 +1,233 @@
-<nav class="navbar navbar-expand-lg menu">
-	<div class="container">
-		<div class="navbar-nav">
-			<a class="menuItem" href="/perfil">
-				Home
+<header>
+	<nav style="height: 10vh;" class="menu navbar navbar-expand-md navbar-light fixed-top">
+		<div class="col-2 d-flex align-items-center ">
+			<a href="#home" style="text-decoration: none;">
+				<img class="ml-5" src="img/livro-menu-removebg-preview.png" width="80px" alt="">
+				<!--<span style="font-size: 25px; text-decoration: none; color: #ee6666d2; font-weight: bold;" class="mx-4 mt-2 ">NOME SITE</span>-->
 			</a>
-
-			<a class="menuItem" href="/sair">
-				Sair
-			</a>
+		</div>
 
 
-			<img src="/img/twitter_logo.png" class="menuIco" />
+
+		<button class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nav-principal">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="nav-principal">
+			<ul class="navbar-nav ml-auto">
+
+				<li class="nav-item">
+					<a href="/livros" class="botao-books nav-nome nav-link  mx-4 text-white ">Todos os Livros</a>
+				</li>
+
+
+				<li class="nav-item">
+					<a href="/buscarLivros" class="botao-books nav-nome nav-link  mx-4 text-white ">Buscar Livros</a>
+				</li>
+
+
+				<li class="nav-item">
+					<a href="/sair" class=" nav-nome nav-link  mx-4 text-white ">Sair</a>
+				</li>
+
+			</ul>
+
+		</div>
+
+
+
+	</nav>
+
+</header>
+
+
+
+
+
+<div style="height: 50vh;" class="row area-home p-0 m-0 ">
+	<div class="sombra-home d-flex align-items-center justify-content-start">
+		<div class=" col-4">
+
+			<div class="text-center area-info-home ">
+				<h1 class="title-home">Olá, <?php echo $_SESSION['nome'] ?> !</h1>
+
+				<p class="frase-home text-justify">
+					Aqui é sua area pessoal, onde você poderá ver os livros disponíveis e doar.
+				</p>
+
+
+			</div>
+
 		</div>
 	</div>
-</nav>
 
-<div class="container mt-5">
-	<div class="row pt-2">
-
-		<div class="col-md-3">
-
-			<div class="perfil">
-				<div class="perfilTopo">
-
-				</div>
-
-				<div class="perfilPainel">
-
-					<div class="row mt-2 mb-2">
-
-						<?php
-						foreach ($this->view->info_usuario  as $info_user => $infoUser) {
-
-						?>
-
-							<div class="col mb-2">
-								<span class="perfilPainelNome"><?= $infoUser['nome'] ?></span>
-							</div>
-
-							<div class="col mb-2">
-								<span class="perfilPainelNome"><?= $infoUser['email'] ?></span>
-							</div>
-
-							<div class="col mb-2">
-								<span class="perfilPainelNome"><?= $infoUser['telefone'] ?></span>
-							</div>
-
-							<div class="col mb-2">
-								<span class="perfilPainelNome"><?= $infoUser['cidade'] ?></span>
-							</div>
-
-
-						<?php } ?>
-					</div>
-
-					<div class="row mb-2">
-
-						<div class="col">
-							<span class="perfilPainelItem">Total de Livros Doados</span><br />
-							<span class="perfilPainelItemValor"><?=$this->view->total_livros['total_livros']?></span>
-						</div>
-
-						<div class="col">
-							<span class="perfilPainelItem">Seguindo</span><br />
-							<span class="perfilPainelItemValor">0</span>
-						</div>
-
-						<div class="col">
-							<span class="perfilPainelItem">Seguidores</span><br />
-							<span class="perfilPainelItemValor">0</span>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-
-		<div class="col-md-6">
-			<div class="row mb-2">
-				<div class="col tweetBox">
+</div>
 
 
 
 
+<div style="height: 75vh;" class="row p-0 m-0">
 
-
-					<form action="/postagens" method="post">
-						<h3 class="title-publi-book">Publicar Livro</h3>
-						<div class=" form-group d-flex align-items-center justify-content-center">
-							<input class="form-control" name="imagem" type="text" placeholder="Informe a Url da imagem">
-						</div>
-
-						<div class="form-group d-flex align-items-center justify-content-center">
-							<input class="form-control" name="nome_livro" type="text" placeholder="Informe o nome do livro">
-						</div>
-
-						<div class="form-group d-flex align-items-center justify-content-center">
-
-							<select name="categoria" size="5">
-								<option value="categoria" disabled selected>Selecione a Categoria</option>
-								<option value="Autoajuda">Autoajuda</option>
-								<option value="Aventura">Aventura</option>
-								<option value="Biográfia">Biográfia</option>
-								<option value="Comédia">Comédia</option>
-								<option value="Didático">Didático</option>
-								<option value="Drama">Drama</option>
-								<option value="Fantasia">Fantasia</option>
-								<option value="Ficção científica">Ficção científica</option>
-								<option value="História em Quadrinhos">História em Quadrinhos</option>
-								<option value="Infantil">Infantil</option>
-								<option value="Infanto Juvenil">Infanto Juvenil</option>
-								<option value="Poesia">Poesia</option>
-								<option value="Romance">Romance</option>
-								<option value="Terror">Terror</option>
-								<option value="Outro">Outro</option>
-							</select>
-
-						</div>
-
-
-						<button type="submit" class="btn btn-primary">Publicar</button>
-					</form>
-
-
-					<!--
-					<form>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-						
-						<div class="col mt-2 d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary">Tweet</button>
-						</div>
-
-					</form>  -->
+	<div class=" col-6 d-flex align-items-center justify-content-center">
 
 
 
+		<?php
+		foreach ($this->view->info_usuario  as $info_user => $infoUser) {
+
+		?>
 
 
 
+			<div style="width: 35vw;" class="area-info-home2 p-5">
+
+				<h4 class="text-danger">Dados do Perfil</h4>
+				<h5><span>Nome:</span> <?= $infoUser['nome'] ?></h5>
+				<h5><span>Email:</span> <?= $infoUser['email'] ?></h5>
+				<h5><span>Telefone:</span> <?= $infoUser['telefone'] ?></h5>
+				<h5 class="mb-3"><span>Cidade:</span> <?= $infoUser['cidade'] ?></h5>
+
+			<?php } ?>
+
+			<button class="btn btn-danger mr-3">Editar Perfil</button>
+			<button class="btn btn-danger">Excluir Conta</button>
 
 
-				</div>
+			<h4 class="projetos-nome  text-center" style="color:#757575; font-size:20px;margin-top:20px">Livros doados por você: </h4>
+
+			<h5 class="text-center mb-2"> <?= $this->view->total_livros['total_livros'] ?> livro(s) doado(s)</h5>
+
+
+
 			</div>
 
 
-
-			<?php
-			foreach ($this->view->postagem as $id_postagem => $postagens) {
-
-			?>
-
-
-
-
-				<div class="col-3 mb-5 d-flex align-items-center justify-content-center">
-
-					<div class=" card d-flex align-items-center justify-content-center" style="width: 15rem; height:auto;">
-						<img style=" height:35vh; width:200px;" class="card-img-top pt-3" src="<?= $postagens['imagem'] ?>" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title"><?= $postagens['nome_livro'] ?> </h5>
-						</div>
-						<ul class="list-group list-group-flush">
-
-							<li class="list-group-item">Cidade: <?= $postagens['cidade'] ?></li>
-							<li class="list-group-item">Data: <?= $postagens['data'] ?></li>
-							<li class="list-group-item"><a href="https://web.whatsapp.com/send?phone=55<?= $postagens['telefone'] ?>" target="_blank" class="btn btn-danger">entre em contato</a></li>
-							<a class="btn btn-danger" onclick="confirmar()">Remover</a>
-
-							<script>
-								function confirmar() {
-									let confirmacao = confirm("Você deseja realmente excluir essa publicação?");
-
-									if (confirmacao == true) {
-										location.href = "/excluir_postagens?excluir_postagens=remover&id_postagem=" + <?= $postagens['id'] ?>;
-
-									}
-
-								}
-							</script>
-
-						</ul>
-					</div>
-				</div>
-
-
-
-			<?php
-			} ?>
-
-
-
-
-
-			<!--
-
-			<div class="row tweet">
-				<div class="col">
-					<p><strong>Nome do Usuário</strong> <span class="text text-muted">- data tweet</span></p>
-					<p>Conteúdo do tweet</p>
-
-					<br />
-					<form>
-						<div class="col d-flex justify-content-end">
-							<button type="submit" class="btn btn-danger"><small>Remover</small></button>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			
--->
-
-		</div>
-
-
-		<div class="col-md-3">
-			<div class="quemSeguir">
-				<span class="quemSeguirTitulo">Quem seguir</span><br />
-				<hr />
-				<a href="/buscarLivros" class="quemSeguirTxt">Buscar Livros</a>
-			</div>
-		</div>
 
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+	<div class=" col d-flex caixa-publicacao align-items-center justify-content-start">
+
+		<form action="/postagens" method="post">
+
+			<div style="width: 40vw;" class="area-publi-home p-5">
+				<h3 class="title-publi-book">Publicar Livro</h3>
+				<div class=" form-group d-flex align-items-center justify-content-center">
+
+
+					<input class="form-control" name="imagem" type="text" placeholder="Informe a Url da imagem">
+				</div>
+
+				<div class="form-group d-flex align-items-center justify-content-center">
+					<input class="form-control" name="nome_livro" type="text" placeholder="Informe o nome do livro">
+				</div>
+
+				<div class="form-group d-flex align-items-center justify-content-center">
+
+					<select name="categoria" size="5">
+						<option value="categoria" disabled selected>Selecione a Categoria</option>
+						<option value="Autoajuda">Autoajuda</option>
+						<option value="Aventura">Aventura</option>
+						<option value="Biográfia">Biográfia</option>
+						<option value="Comédia">Comédia</option>
+						<option value="Didático">Didático</option>
+						<option value="Drama">Drama</option>
+						<option value="Fantasia">Fantasia</option>
+						<option value="Ficção científica">Ficção científica</option>
+						<option value="História em Quadrinhos">História em Quadrinhos</option>
+						<option value="Infantil">Infantil</option>
+						<option value="Infanto Juvenil">Infanto Juvenil</option>
+						<option value="Poesia">Poesia</option>
+						<option value="Romance">Romance</option>
+						<option value="Terror">Terror</option>
+						<option value="Outro">Outro</option>
+					</select>
+
+				</div>
+
+
+				<button type="submit" class="btn btn-danger">Publicar</button>
+
+
+			</div>
+		</form>
+
+
+	</div>
+
+
+
+</div>
+<!--FIM COL-->
+
+
+
+
+
+<h1 class="projetos-nome text-center mt-5" style="color:#757575;">Meus Livros Publicados</h1>
+
+<h5 class="text-center mb-5"> <?= $this->view->total_livros['total_livros'] ?> livro(s) doado(s) por você</h5>
+
+<div class="container">
+
+	<div id="projetos" class=" row  bg-white m-0 p-0">
+
+
+		<div class="col">
+
+			<div class="row">
+
+
+
+				<?php
+				foreach ($this->view->postagem as $id_postagem => $postagens) {
+
+				?>
+
+
+					<div class="col-3 mb-5 d-flex align-items-center justify-content-center text-center">
+
+						<div class=" card d-flex align-items-center justify-content-center" style="width: 15rem; height:auto;">
+							<img style=" height:35vh; width:200px;" class="card-img-top pt-3" src="<?= $postagens['imagem'] ?>" alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title"><?= $postagens['nome_livro'] ?></h5>
+							</div>
+							<ul class="list-group list-group-flush">
+
+								<li class="list-group-item">Cidade: <?= $postagens['cidade'] ?> </li>
+								<li class="list-group-item"> Data da publicação: <?= $postagens['data'] ?> </li>
+
+							</ul>
+
+							<a class="btn btn-danger m-2 text-white" href="/remover_postagens?remover_postagens=remover&id=<?= $postagens['id'] ?>">Remover</a>
+
+						</div>
+					</div>
+
+
+
+
+				<?php
+				} ?>
+
+
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
 </div>
