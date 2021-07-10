@@ -16,9 +16,6 @@
 		<div class="collapse navbar-collapse" id="nav-principal">
 			<ul class="navbar-nav ml-auto">
 
-				<li class="nav-item">
-					<a href="/livros" class="botao-books nav-nome nav-link  mx-4 text-white ">Todos os Livros</a>
-				</li>
 
 
 				<li class="nav-item">
@@ -157,6 +154,15 @@
 
 				<button type="submit" class="btn btn-danger">Publicar</button>
 
+				<?php if ($this->view->post == 'erro') { ?>
+
+					<div class="alert alert-danger mt-2" role="alert">
+						* Erro ao tentar publicar o livro, verifique se todos os campos foram
+						preenchidos corretamente.
+					</div>
+
+				<?php } ?>
+
 
 			</div>
 		</form>
@@ -173,7 +179,7 @@
 
 
 
-<h1 class="projetos-nome text-center mt-5" style="color:#757575;">Meus Livros Publicados</h1>
+<h1 class="projetos-nome text-center mt-5 pt-5" style="color:#757575;">Meus Livros Publicados</h1>
 
 <h5 class="text-center mb-5"> <?= $this->view->total_livros['total_livros'] ?> livro(s) doado(s) por você</h5>
 
@@ -203,12 +209,14 @@
 							</div>
 							<ul class="list-group list-group-flush">
 
-								<li class="list-group-item">Cidade: <?= $postagens['cidade'] ?> </li>
-								<li class="list-group-item"> Data da publicação: <?= $postagens['data'] ?> </li>
+
+
 
 							</ul>
 
 							<a class="btn btn-danger m-2 text-white" href="/remover_postagens?remover_postagens=remover&id=<?= $postagens['id'] ?>">Remover</a>
+
+							<a class="btn btn-secondary m-2 px-4 text-white">Editar</a>
 
 						</div>
 					</div>

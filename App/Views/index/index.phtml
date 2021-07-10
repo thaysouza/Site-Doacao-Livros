@@ -1,60 +1,44 @@
+<script type="text/javascript">
+	const bodyElement = document.querySelector('body');
+	bodyElement.classList += ' js';
+</script>
+
 <header>
-	<nav style="height: 10vh;" class="menu navbar navbar-expand-md navbar-light fixed-top">
-		<div class="col-2 d-flex align-items-center ">
+	<nav class="menu navbar navbar-expand-md navbar-light fixed-top">
+		<div class="container">
 			<a href="#home" style="text-decoration: none;">
-				<img class="ml-5" src="img/livro-menu-removebg-preview.png" width="80px" alt="">
-				<!--<span style="font-size: 25px; text-decoration: none; color: #ee6666d2; font-weight: bold;" class="mx-4 mt-2 ">NOME SITE</span>-->
+				<img src="img/livro-menu-removebg-preview.png" width="80px" alt="">
 			</a>
+
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="nav-principal">
+				<ul class="navbar-nav ml-auto ">
+
+					<li class="nav-item">
+						<a href="/livros" class="nav-link mx-4">Livros</a>
+					</li>
+
+
+					<li class="nav-item">
+						<a href="#sobremim" class=" nav-link mx-4">Sobre</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="#educacao" class=" nav-link mx-4"> Contato</a>
+					</li>
+
+
+					<li class="nav-item">
+						<a href="/cadastrar" class="type-button nav-link mx-4"> Entrar</a>
+					</li>
+
+				</ul>
+
+			</div>
 		</div>
-
-
-
-		<button class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nav-principal">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="nav-principal">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a href="/buscarLivros" class="botao-books nav-nome nav-link  mx-4 text-white ">Livros Disponiveis</a>
-				</li>
-
-				<li class="nav-item input-login-adm ">
-					<form method="post" action="/autenticarAdm">
-						<div class="row">
-							<div class="col">
-								<input type="text" name="email" class="form-control" placeholder="E-mail">
-							</div>
-							<div class="col">
-								<input type="password" name="senha" class="form-control" placeholder="Senha">
-							</div>
-							<div class="col-auto">
-								<button type="submit" class="btn btn-dark mt-2" onclick="resposta()">Area Adm</button>
-							</div>
-						</div>
-
-						<? if ($this->view->login == 'erro2') { ?>
-
-							<script>
-								function resposta() {
-
-									alert("E-mail e ou senha inválido(s)");
-
-								}
-							</script>
-
-
-						<?  } ?>
-
-					</form>
-				</li>
-
-
-			</ul>
-
-		</div>
-
-
 
 	</nav>
 
@@ -62,191 +46,185 @@
 
 
 
-<div id="home" class=" row row-home m-0 p-0 ">
-
-	<div style="height: 100vh;" class="col col-md-6 d-flex  align-items-center justify-content-center">
-
-		<div class=" text-center">
+<main>
 
 
-			<form class="caixa-login" method="post" action="/autenticar">
-				<h3>Faça seu Login</h3>
 
-				<input type="text" name="email" class="form-control" placeholder="E-mail">
+	<section id="home" class=" row row-home m-0 p-0 ">
 
-				<input type="password" name="senha" class="form-control" placeholder="Senha">
+		<div style="height: 100vh;" class="col col-md-6 d-flex  align-items-center justify-content-center">
 
-				<button type="submit" class="botao-login mb-2">Entrar</button><br>
+			<div class="text-center col-text border">
 
 
-				<?php if ($this->view->login == 'erro') { ?>
-					<div class="alert alert-danger mt-2" role="alert">
-						*E-mail e ou senha inválido(s)
-					</div>
+				<h3>Tá afim de doar um livro?</h3>
+				<button>Saiba como</button>
 
 
-				<?php } ?>
-			</form>
+			</div>
 
-			<a href="/inscreverse" class="text-white">Ainda não possui uma conta? Clique aqui!</a>
 
 		</div>
+
+		<div id="img-index" style="height: 100vh;" class="col col-md-6  d-none d-md-block m-0 p-0 align-items-end justify-content-center">
+
+		</div>
+	</section>
+
+
+
+
+	<section style="height: 70vh;" id="como-funciona" class="row row-sobre p-0 d-flex  align-items-center justify-content-center text-center">
+
+
+		<div class="col-12 grid-section categorias d-flex  align-items-center justify-content-center text-center" id="categorias">
+
+			<div class="text-center col-text ">
+				<h1 class="titulo">Entenda como Funciona</h1>
+				<div class="categorias-lista js-tabmenu button-group ">
+
+					<button class="color">
+						1. Faça seu cadastro
+					</button>
+					<button>
+						2. Publique seu livro
+					</button>
+					<button>
+						3. Pronto :)
+					</button>
+
+				</div>
+				<div class="categorias-descricao js-tabcontent">
+					<section>
+						<div class="container">
+							<div class="row">
+								<div class="col-9">
+									<h2>primeiro</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+								</div>
+								<div class="col-3">
+									<img src="img/201-2013472_thats-textbook-icon3-textbook-icon.png" width="150px" alt="">
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<div class="container">
+							<div class="row">
+								<div class="col-9">
+									<h2>segundo</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+
+								</div>
+								<div class="col-3">
+									<img src="img/201-2013472_thats-textbook-icon3-textbook-icon.png" width="150px" alt="">
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<div class="container">
+							<div class="row">
+								<div class="col-9">
+									<h2>terceiro</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+								</div>
+								<div class="col-3">
+									<img src="img/201-2013472_thats-textbook-icon3-textbook-icon.png" width="150px" alt="">
+								</div>
+							</div>
+						</div>
+					</section>
+
+				</div>
+
+
+			</div>
+
+
+
+			<script type="text/javascript">
+				function initTabNav() {
+
+					const tabMenu = document.querySelectorAll('.js-tabmenu button');
+					const tabContent = document.querySelectorAll('.js-tabcontent section');
+
+					if (tabMenu.length && tabContent.length) {
+
+						tabContent[0].classList.add('ativo');
+
+						function activeTab(index) {
+							tabContent.forEach((content) => {
+								content.classList.remove('ativo');
+							});
+							tabContent[index].classList.add('ativo');
+						}
+
+
+						tabMenu.forEach((itemMenu, index) => {
+							itemMenu.addEventListener('click', () => {
+								activeTab(index);
+							});
+						});
+
+					}
+				}
+				initTabNav();
+
+
+
+				const button = document.querySelectorAll('.js-tabmenu button');
+				console.log(button)
+
+				function callback(event) {
+
+					button.forEach((content) => {
+						content.classList.remove('color')
+					})
+					button[event].classList.add('color');
+
+				}
+
+
+				button.forEach((botao, event) => {
+					botao.addEventListener('click', () => {
+						callback(event);
+					});
+				});
+			</script>
+
+
+
+
+		</div>
+
+
+
+		<div class="col d-flex  align-items-center justify-content-center text-center">
+
+
+			<a href="/" class="button-sign-up nav-link mx-4">Escreva-se</a>
+
+		</div>
+
+
+	</section>
+
+
+
+
+
+
+
+
+	<div style="height: 40%; " id="sobre" class="row row-sobre m-0 p-0 bg-dark">
 
 
 	</div>
 
-
-
-	<div style="height: 100vh;" class="col col-md-6 d-flex m-0 p-0 align-items-end justify-content-center">
-		<div class=" text-center sombra-img">
-
-			<img src="img/img-home.png" width="580px" alt="">
-
-
-		</div>
-
-	</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-
-<div class="container-fluid h-100">
-	<div class="row">
-    
-    <div class="col-md-6 banner">
-    	<div class="row h-100 justify-content-center align-items-center">
-    		<div>
-				<div class="communicationItem">
-					<i class="fas fa-search fa-2x mr-3"></i>
-					Siga o que lhe interessa.
-				</div>
-				<div class="communicationItem">
-					<i class="fas fa-user-friends fa-2x mr-3"></i>
-					Saiba sobre o que as pessoas estão falando.
-				</div>
-				<div class="communicationItem">
-					<i class="far fa-comment fa-2x mr-3"></i>
-					Participe da conversa.
-				</div>
-			</div>
-		</div>
-    </div>
-
-    <div class="col-md-6 pt-4 pl-5 pr-5">
-		<form method="post" action="/autenticar">
-			<div class="row">
-				<div class="col">
-					<input type="text" name="email" class="form-control" placeholder="E-mail">
-				</div>
-				<div class="col">
-					<input type="password" name="senha" class="form-control" placeholder="Senha">
-				</div>
-				<div class="col-auto">
-					<button type="submit" class="btn btn-primary mb-2">Entrar</button>
-				</div>
-			</div>
-
-			<?php //if($this->view->login == 'erro') { 
-			?>
-				<div class="row">
-					<div class="col">
-						<span class="text text-danger">*E-mail e ou senha inválido(s)</span>
-					</div>
-				</div>
-			<?php // } 
-			?>
-		</form>
-
-		<div class="row pt-5 pl-5 pr-5">
-			<div class="col pl-5 pr-5">
-				<img src="/img/twitter_logo.png" />
-				<h1 class="title">Veja o que está acontecendo no mundo agora</h1>
-
-				<h2 class="mt-5 subtitle">Participe hoje do Twitter.</h2>
-				<a href="/inscreverse" class="btn btn-primary btn-block mb-2">Inscrever-se</a>
-			</div>	
-		</div>
-
-
-    </div>
-
-  </div>
-</div>
-
-
-
-         <h1>Area do Administrador</h1>
-		<form method="post" action="/autenticarAdm">
-			<div class="row">
-				<div class="col">
-					<input type="text" name="email" class="form-control" placeholder="E-mail">
-				</div>
-				<div class="col">
-					<input type="password" name="senha" class="form-control" placeholder="Senha">
-				</div>
-				<div class="col-auto">
-					<button type="submit" class="btn btn-primary mb-2">Entrar</button>
-				</div>
-			</div>
-            
-			<? //if($this->view->login == 'erro2') { 
-			?>
-			<div class="row">
-			  <div class="col">
-			  <span class="text text-danger">Acesso negado</span>
-			  </div>
-			</div>
-           <? // } 
-			?>
-
-		</form>
-
-
-    </div>
-
-  </div>
-</div>
+</main>

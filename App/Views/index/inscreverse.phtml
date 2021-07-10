@@ -40,10 +40,15 @@
 
               <?php if ($this->view->erroCadastro) { ?>
 
-                <small class="form-text text-danger"> * Erro ao tentar realizar o cadastro, verifique se todos os campos foram
+                <div class="alert alert-danger mt-2" role="alert">
+                  * Erro ao tentar realizar o cadastro, verifique se todos os campos foram
                   preenchidos corretamente.
-                </small>
+                </div>
+
+
+
               <?php } ?>
+
 
             </form>
 

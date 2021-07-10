@@ -33,37 +33,6 @@ class AuthController extends Action
     }
 
 
-
-
-    public function autenticarAdm()
-    {
-
-
-        $adm = Container::getModel('Administrador');
-
-        $adm->__set('email', $_POST['email']);
-        $adm->__set('senha', md5($_POST['senha']));
-
-        $adm->autenticarAdm();
-
-
-        if ($adm->__get('id_adm') != '' && $adm->__get('email') != '') {
-
-            session_start();
-
-            $_SESSION['id_adm'] = $adm->__get('id_adm');
-            $_SESSION['email'] = $adm->__get('email');
-
-            header('Location: /areaAdm');
-        } else {
-            header('Location: /?login=erro2');
-        }
-    }
-
-
-
-
-
     public function sair()
     {
         session_start();

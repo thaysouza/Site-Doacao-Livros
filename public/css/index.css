@@ -1,0 +1,188 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    --white: #f5f5f5;
+    --purple-dark: #931da8;
+    --purple-light: #a549b5;
+    --red-light: #ee6666;
+    font-size: 62.5%;
+    /* 10px padrão */
+}
+
+header .menu {
+    background-color: var(--white);
+    font-family: 'Mansalva', cursive;
+    font-size: 2.4rem;
+    box-shadow: 2px 4px 4px 2px rgba(2, 2, 2, 0.25);
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main section.row-home {
+    background-color: var(--purple-dark);
+}
+
+main section.row-home .col-text {
+    margin-top: 7vh;
+    width: 80%;
+}
+
+main section.row-home .col-text h3 {
+    font-size: 7rem;
+    font-family: 'Mansalva', cursive;
+    color: white;
+}
+
+main section.row-home .col-text button {
+    margin-top: 5rem;
+    text-align: center;
+    width: 28rem;
+    height: 8rem;
+    background-color: white;
+    border-radius: 0 5rem 5rem 5rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--purple-dark) !important;
+    cursor: pointer;
+    /*transition: filter .1s;*/
+    transform: scale(0.9);
+    transition: all .40s ease;
+}
+
+main section.row-home .col-text button:hover {
+    filter: brightness(1.2);
+    transform: scale(1);
+}
+
+/*/////////////////////////////////////////**/
+
+main #como-funciona {
+    margin: 5rem 0 5rem 0;
+}
+
+main #como-funciona .col-text {
+    width: 60%;
+}
+
+main section .grid-section h1 {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+    color: var(--red-light);
+}
+
+main section .grid-section button {
+    padding: 1.5rem;
+    width: 33.1%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 3rem;
+    background-color: white;
+    color: #a549b5;
+    cursor: pointer;
+}
+
+main section .grid-section button:focus {
+    outline-style: none;
+}
+
+.js .js-tabmenu {
+    border-radius: 3rem;
+}
+
+.js .js-tabmenu button.color {
+    background-color: var(--purple-dark);
+    color: white;
+}
+
+.js .js-tabcontent section {
+    display: none;
+    margin: 2rem;
+    border-bottom: 1px solid rgb(192, 190, 190);
+}
+
+.js .js-tabcontent section.ativo {
+    display: block !important;
+    animation: show .5s forwards;
+    font-size: 2rem;
+    padding: 2.5rem;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translate3d(-30px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.button-sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(126, 122, 122);
+    font-size: 2.5rem;
+    padding: 2rem 4rem;
+    margin-top: 2.5rem;
+    text-align: center;
+    width: 25rem;
+    height: 6rem;
+    border-radius: 0 5rem 5rem 5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: all .40s ease;
+    color: white;
+    text-decoration: none;
+}
+
+.button-sign-up:hover {
+    color: white;
+    opacity: .9;
+    transform: scale(1);
+}
+
+/*////////////////////////////////*/
+
+/*cadastro*/
+
+.caixa-cadastro {
+    box-shadow: 2px 4px 6px 6px rgba(2, 2, 2, 0.25);
+    border-radius: 20px;
+    width: 400px;
+}
+
+.botao-voltar-home {
+    background-color: #7b1fa293;
+    margin-top: 3%;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 5px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px 2px rgba(2, 2, 2, 0.25);
+    color: white;
+    border: none;
+}
+
+.botao-voltar-home:hover {
+    color: white;
+    background-color: #7b1fa2e8;
+}
+
+#img-index {
+    background: url('../img/img-index.svg') no-repeat;
+    background-position: 8rem 3rem;
+}

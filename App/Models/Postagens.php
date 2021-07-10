@@ -42,6 +42,27 @@ class Postagens extends Model
         return $this;
     }
 
+    public function validarPostagens()
+    {
+        $valido = true;
+
+        if (strlen($this->__get('imagem')) < 3) {
+            $valido = false;
+        }
+
+        if (strlen($this->__get('nome_livro')) < 3) {
+            $valido = false;
+        }
+
+        if (strlen($this->__get('categoria')) < 3) {
+            $valido = false;
+        }
+
+
+        return $valido;
+    }
+
+
 
 
     public function infoUsuarioPostagem()
@@ -100,6 +121,8 @@ class Postagens extends Model
          left join usuarios as u on (p.id_usuario = u.id)
      where 
      p.categoria like :categoria
+     order by 
+     data desc 
      ";
 
         $stmt = $this->db->prepare($query);
@@ -121,5 +144,29 @@ class Postagens extends Model
         $stmt->execute();
 
         return true;
+    }
+
+
+
+    public function infoUsuarioPostagemAdm()
+    {
+
+        $query = "
+        
+           select 
+              p.id, p.id_usuario, u.nome, u.telefone, u.cidade, p.nome_livro, p.imagem, p.categoria, DATE_FORMAT(p.data, '%d/%m/%Y %H:%i') as data
+           from 
+               postagens as p 
+               left join usuarios as u on (p.id_usuario = u.id)
+        
+           order by 
+              data desc
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

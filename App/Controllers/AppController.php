@@ -32,7 +32,7 @@ class AppController extends Action
         $this->view->info_usuario = $usuario->mostrarInfoUsuario();
         $this->view->total_livros =  $usuario->mostrarTotalLivros();
 
-
+        $this->view->post = isset($_GET['post']) ? $_GET['post'] : '';
 
         $this->render('perfil');
     }
@@ -68,15 +68,23 @@ class AppController extends Action
         $postagens->__set('id_usuario', $_SESSION['id']);
 
 
-        $postagens->cadastrarPostagens();
 
-        header('Location: /perfil');
+        if ($postagens->__get('imagem') == '' || $postagens->__get('nome_livro') == ''  || $postagens->__get('categoria') == '') {
+            header('Location: /perfil?post=erro');
+        } else {
+            $postagens->cadastrarPostagens();
+
+            header('Location: /perfil');
+        }
     }
+
+
+
 
 
     public function buscarLivros()
     {
-
+        $this->validaAutenticacao();
 
         $pesquisarLivro = isset($_GET['livros']) ? $_GET['livros'] : '';
 
@@ -121,26 +129,5 @@ class AppController extends Action
         if (!isset($_SESSION['id']) || $_SESSION['id'] == '' || !isset($_SESSION['nome']) || $_SESSION['nome'] == '') {
             header('Location: /?login=erro');
         }
-    }
-
-
-
-
-    public function areaAdm()
-    {
-
-        session_start();
-
-        if (!isset($_SESSION['id_adm']) || $_SESSION['id_adm'] == '' || !isset($_SESSION['email']) || $_SESSION['email'] == '') {
-            header('Location: /?login=erro2');
-        }
-
-
-        $usuario = Container::getModel('Usuario');
-
-        $this->view->info_usuario = $usuario->getInfoUsuarioAdm();
-
-
-        $this->render('areaAdm');
     }
 }

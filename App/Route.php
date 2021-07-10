@@ -4,14 +4,22 @@ namespace App;
 
 use MF\Init\Bootstrap;
 
-class Route extends Bootstrap {
+class Route extends Bootstrap
+{
 
-	protected function initRoutes() {
+	protected function initRoutes()
+	{
 
 		$routes['home'] = array(
 			'route' => '/',
 			'controller' => 'indexController',
 			'action' => 'index'
+		);
+
+		$routes['cadastrar'] = array(
+			'route' => '/cadastrar',
+			'controller' => 'indexController',
+			'action' => 'cadastrar'
 		);
 
 
@@ -84,17 +92,9 @@ class Route extends Bootstrap {
 		);
 
 
-		$routes['areaAdm'] = array(
-			'route' => '/areaAdm',
-			'controller' => 'AppController',
-			'action' => 'areaAdm'
-		);
 
 
 
 		$this->setRoutes($routes);
 	}
-
 }
-
-?>
