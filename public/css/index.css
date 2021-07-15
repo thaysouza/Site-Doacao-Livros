@@ -62,6 +62,11 @@ main section.row-home .col-text button:hover {
     transform: scale(1);
 }
 
+#img-index {
+    background: url('../img/img-index.svg') no-repeat;
+    background-position: 8rem 3rem;
+}
+
 /*/////////////////////////////////////////**/
 
 main #como-funciona {
@@ -154,6 +159,12 @@ main section .grid-section button:focus {
 
 /*////////////////////////////////*/
 
+.row-area-frase {
+    height: 50vh;
+}
+
+/*////////////////////////////////*/
+
 .row-books {
     height: auto;
 }
@@ -236,7 +247,20 @@ main footer {
     background-color: #7b1fa2e8;
 }
 
-#img-index {
-    background: url('../img/img-index.svg') no-repeat;
-    background-position: 8rem 3rem;
+/*****************************/
+
+main .row-area-frase {
+    background-color: var(--purple-dark);
+}
+
+main .row-area-frase .circle {
+    height: 50vh;
+    background: url('../img/circle.svg') no-repeat;
+    background-position: 28rem -20rem;
+}
+
+main .row-area-frase .circle p {
+    font-family: 'Mansalva', cursive;
+    font-size: 2.5rem;
+    width: 35%;
 }
