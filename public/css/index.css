@@ -65,7 +65,7 @@ main section.row-home .col-text button:hover {
 /*/////////////////////////////////////////**/
 
 main #como-funciona {
-    margin: 5rem 0 5rem 0;
+    margin: 8rem 0 8rem 0;
 }
 
 main #como-funciona .col-text {
@@ -74,7 +74,7 @@ main #como-funciona .col-text {
 
 main section .grid-section h1 {
     font-size: 4rem;
-    margin-bottom: 3rem;
+    margin-bottom: 6rem;
     color: var(--red-light);
 }
 
@@ -104,7 +104,7 @@ main section .grid-section button:focus {
 
 .js .js-tabcontent section {
     display: none;
-    margin: 2rem;
+    margin: 2rem 0 0 0;
     border-bottom: 1px solid rgb(192, 190, 190);
 }
 
@@ -131,12 +131,12 @@ main section .grid-section button:focus {
     justify-content: center;
     align-items: center;
     background-color: rgb(126, 122, 122);
-    font-size: 2.5rem;
-    padding: 2rem 4rem;
-    margin-top: 2.5rem;
+    font-size: 3.5rem;
+    margin: 6rem 0 0 0;
     text-align: center;
-    width: 25rem;
-    height: 6rem;
+    font-family: 'Mansalva', cursive;
+    width: 28rem;
+    height: 8rem;
     border-radius: 0 5rem 5rem 5rem;
     font-weight: bold;
     cursor: pointer;
@@ -153,6 +153,60 @@ main section .grid-section button:focus {
 }
 
 /*////////////////////////////////*/
+
+.row-books {
+    height: auto;
+}
+
+.row-books .container {
+    margin: 8rem 0 8rem 0;
+}
+
+.row-books .container .col-books h1 {
+    font-size: 4rem;
+    color: var(--red-light);
+    margin-bottom: 4rem;
+}
+
+.row-books .container .col-books .card {
+    padding: 2rem 2rem 0 2rem;
+    width: 22rem;
+    height: auto;
+    transform: scale(0.9);
+    transition: all .40s ease;
+}
+
+.row-books .container .col-books .card:hover {
+    transform: scale(1);
+    box-shadow: 0 8px 8px -6px var(--red-light);
+    cursor: pointer;
+}
+
+.row-books .container .col-books .card img {
+    height: 22rem;
+    width: 100%;
+}
+
+.row-books .container .col-books .card .card-body {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(192, 190, 190);
+}
+
+.row-books .container .col-books .card .list-group-item {
+    font-size: 1.3rem;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+}
+
+main footer {
+    background-color: rgb(126, 122, 122);
+    height: 40vh;
+}
 
 /*cadastro*/
 

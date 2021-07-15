@@ -11,6 +11,10 @@ class IndexController extends Action
 	public function index()
 	{
 
+		$postagens = Container::getModel('postagens');
+
+		$this->view->livrostodos = $postagens->ultimosPostados();
+
 		$this->render('index');
 	}
 

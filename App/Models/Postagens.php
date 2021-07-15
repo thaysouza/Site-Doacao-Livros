@@ -90,6 +90,24 @@ class Postagens extends Model
     }
 
 
+    public function ultimosPostados()
+    {
+
+        $query = "
+        
+         select p.id, p.id_usuario, u.nome, u.telefone, u.cidade, p.nome_livro, p.imagem, p.categoria from postagens as p left join usuarios as u on (p.id_usuario = u.id) order by id desc LIMIT 8
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+
+
+
     public function mostrarLivros()
     {
 

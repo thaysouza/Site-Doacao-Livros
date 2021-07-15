@@ -33,65 +33,39 @@
 
 
 
+<div class="row row-books m-0 p-0  d-flex align-items-center justify-content-center text-center">
 
-<div class="container">
-
-
-
-	<div id="projetos" class=" row  bg-white m-0 p-0">
-
-
-		<div class="col text-center">
-
-
-			<h1 style="margin-top: 15vh; color:#ee6666;">Todos os Livros Disponíveis</h1>
-
+	<div class="container">
+		<div class="col col-books text-center">
+			<h1 class="mt-5">Livros Disponíveis</h1>
 			<div class="row">
-
-
-
 				<?php
+
 				foreach ($this->view->livrostodos as $id_postagem => $postagens) {
 
 				?>
-
-
-					<div class="col-3 mb-5 d-flex align-items-center justify-content-center text-center">
-
-
-						<div class=" card d-flex align-items-center justify-content-center" style="width: 15rem; height:auto;">
-							<a href="/inscreverse"><img style=" height:35vh; width:200px;" class="card-img-top pt-3" src="<?= $postagens['imagem'] ?>" alt="Card image cap"></a>
+					<div class="col-3  d-flex align-items-center justify-content-center text-center">
+						<div class="card d-flex align-items-center justify-content-center">
+							<a href="/inscreverse"><img class="card-img-top " src="<?= $postagens['imagem'] ?>" alt="livro + <?= $postagens['nome_livro'] ?>"></a>
 							<div class="card-body">
-								<h5 class="card-title"><?= $postagens['nome_livro'] ?></h5>
+								<h3 class="card-title"><?= $postagens['nome_livro'] ?></h3>
 							</div>
 							<ul class="list-group list-group-flush">
 
 								<li class="list-group-item">Cidade: <?= $postagens['cidade'] ?> </li>
-								<li class="list-group-item"> Data da publicação: <?= $postagens['data'] ?> </li>
 
 							</ul>
-
-
-
 						</div>
-
-
 					</div>
-
-
-
-
 				<?php
+
 				} ?>
 
 
-
 			</div>
-
-
 		</div>
-
-
+		<!---<a href="/inscreverse">Veja mais</a>-->
 	</div>
+
 
 </div>

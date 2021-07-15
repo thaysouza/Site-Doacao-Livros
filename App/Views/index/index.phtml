@@ -54,7 +54,7 @@
 
 		<div style="height: 100vh;" class="col col-md-6 d-flex  align-items-center justify-content-center">
 
-			<div class="text-center col-text border">
+			<div class="text-center col-text">
 
 
 				<h3>Tá afim de doar um livro?</h3>
@@ -74,14 +74,14 @@
 
 
 
-	<section style="height: 70vh;" id="como-funciona" class="row row-sobre p-0 d-flex  align-items-center justify-content-center text-center">
+	<section id="como-funciona" class="row row-sobre p-0 d-flex  align-items-center justify-content-center text-center">
 
 
 		<div class="col-12 grid-section categorias d-flex  align-items-center justify-content-center text-center" id="categorias">
 
 			<div class="text-center col-text ">
 				<h1 class="titulo">Entenda como Funciona</h1>
-				<div class="categorias-lista js-tabmenu button-group ">
+				<div class="categorias-lista js-tabmenu button-group border">
 
 					<button class="color">
 						1. Faça seu cadastro
@@ -94,7 +94,7 @@
 					</button>
 
 				</div>
-				<div class="categorias-descricao js-tabcontent">
+				<div class="categorias-descricao js-tabcontent ">
 					<section>
 						<div class="container">
 							<div class="row">
@@ -206,9 +206,17 @@
 
 
 		<div class="col d-flex  align-items-center justify-content-center text-center">
+			<a href="/" class="button-sign-up nav-link ">Cadastre-se</a>
+		</div>
 
 
-			<a href="/" class="button-sign-up nav-link mx-4">Escreva-se</a>
+	</section>
+
+
+
+	<section style="height:50vh; background: #931da8;" class="row">
+
+		<div class="col">
 
 		</div>
 
@@ -222,9 +230,46 @@
 
 
 
-	<div style="height: 40%; " id="sobre" class="row row-sobre m-0 p-0 bg-dark">
+	<div class="row row-books m-0 p-0  d-flex align-items-center justify-content-center text-center">
+
+		<div class="container">
+			<div class="col col-books text-center">
+				<h1>Últimos livros adicionados</h1>
+				<div class="row">
+					<?php
+
+					foreach ($this->view->livrostodos as $id_postagem => $postagens) {
+
+					?>
+						<div class="col-3  d-flex align-items-center justify-content-center text-center">
+							<div class="card d-flex align-items-center justify-content-center">
+								<a href="/inscreverse"><img class="card-img-top " src="<?= $postagens['imagem'] ?>" alt="livro + <?= $postagens['nome_livro'] ?>"></a>
+								<div class="card-body">
+									<h3 class="card-title"><?= $postagens['nome_livro'] ?></h3>
+								</div>
+								<ul class="list-group list-group-flush">
+
+									<li class="list-group-item">Cidade: <?= $postagens['cidade'] ?> </li>
+
+								</ul>
+							</div>
+						</div>
+					<?php
+
+					} ?>
+
+
+				</div>
+			</div>
+			<!---<a href="/inscreverse">Veja mais</a>-->
+		</div>
 
 
 	</div>
+
+	<footer>
+
+
+	</footer>
 
 </main>
